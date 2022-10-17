@@ -1,9 +1,7 @@
 package br.com.cursospringbootangularbackend.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.br.CPF;
-import com.sun.istack.NotNull;
 import lombok.Data;
 
 import javax.persistence.*;

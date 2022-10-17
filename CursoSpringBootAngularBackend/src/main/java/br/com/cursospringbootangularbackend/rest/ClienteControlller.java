@@ -40,7 +40,7 @@ public class ClienteControlller {
             repository.delete(cliente);
             return Void.TYPE;
         })
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente nao encontrado"));
     }
 
     @PutMapping("{id}")
@@ -52,6 +52,6 @@ public class ClienteControlller {
                     clienteAtualizado.setId(cliente.getId());
                     return repository.save(clienteAtualizado);
                 })
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente nao encontrado"));
     }
 }
