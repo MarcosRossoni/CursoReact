@@ -2,22 +2,22 @@
 <ol class="breadcrumb mb-4">
   <li class="breadcrumb-item active">Cadastros</li>
 </ol>
-<div>
-  <form class="container">
+<div class="container">
+  <form #clienteForm="ngForm" (ngSubmit)="onSubmit()">
 
     <div class="row">
 
       <div class="col-md-6">
         <div class="form-group">
           <label>ID:</label>
-          <input type="text" class="form-control" disabled/>
+          <input type="text" [ngModel]="cliente.id" name="id" class="form-control" disabled/>
         </div>
       </div>
 
       <div class="col-md-6">
         <div class="form-group">
           <label>Data Nascimento:</label>
-          <input type="text" class="form-control" disabled/>
+          <input type="text" [ngModel]="cliente.dataCadastro" name="dataCadastro" class="form-control" disabled/>
         </div>
       </div>
 
@@ -26,21 +26,21 @@
       <div class="col-md-6">
         <div class="form-group">
           <label>Nome: *</label>
-          <input type="text" class="form-control" value="{{cliente.nome}}"/>
+          <input type="text" [(ngModel)]="cliente.nome" name="nome" class="form-control"/>
         </div>
       </div>
 
       <div class="col-md-6">
         <div class="form-group">
           <label>CPF: *</label>
-          <input type="text" class="form-control"/>
+          <input type="text" [(ngModel)]="cliente.cpf" name="cpf" class="form-control"/>
         </div>
       </div>
     </div>
 
     <div class="row">
       <div class="col-md-2">
-        <button type="submit" class="btn btn-success" (click)="clicar()">
+        <button type="submit" class="btn btn-success" (click)="onSubmit()">
           <i class="fa fa-save"></i> Salvar
         </button>
       </div>
