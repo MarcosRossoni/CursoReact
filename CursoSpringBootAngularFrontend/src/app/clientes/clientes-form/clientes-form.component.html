@@ -1,9 +1,9 @@
 <h1 class="mt-4">Clientes</h1>
 <ol class="breadcrumb mb-4">
-  <li class="breadcrumb-item active">Cadastros</li>
+  <li class="breadcrumb-item active">{{cliente.id ? 'Edição' : 'Cadastro'}}</li>
 </ol>
 <div class="container">
-  <form #clienteForm="ngForm" (ngSubmit)="onSubmit()">
+  <form #clienteForm="ngForm">
     <div class='row'>
       <div class='alert alert-success' role='alert' *ngIf='success'>
         Cliente cadastrado com sucesso!
@@ -23,7 +23,7 @@
 
       <div class="col-md-6">
         <div class="form-group">
-          <label>Data Nascimento:</label>
+          <label>Data Cadastro:</label>
           <input type="text" [ngModel]="cliente.dataCadastro" name="dataCadastro" class="form-control" disabled/>
         </div>
       </div>
@@ -46,9 +46,17 @@
     </div>
 
     <div class="row">
-      <div class="col-md-2">
-        <button type="submit" class="btn btn-success" (click)="onSubmit()">
+      <div class="col-md-3">
+        <button type="submit" class="btn btn-success" (click)="onSubmit()" *ngIf='!cliente.id'>
           <i class="fa fa-save"></i> Salvar
+        </button>
+
+        <button type="submit" class="btn btn-primary" (click)="onSubmit()" *ngIf='cliente.id'>
+          <i class="fa fa-sync-alt"></i> Atualizar
+        </button>
+
+        <button type="button" class="btn btn-danger ml-1" (click)="voltarListagem()">
+          <i class="fa fa-arrow-alt-circle-left"></i> Voltar
         </button>
       </div>
     </div>
