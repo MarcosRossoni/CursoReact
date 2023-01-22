@@ -5,8 +5,10 @@ import br.com.cursospringbootangularbackend.model.repository.ClienteRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+import org.w3c.dom.stylesheets.LinkStyle;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/clientes")
@@ -23,6 +25,11 @@ public class ClienteControlller {
     @ResponseStatus(HttpStatus.CREATED)
     public Cliente salvar(@RequestBody @Valid Cliente cliente){
         return repository.save(cliente);
+    }
+
+    @GetMapping
+    public List<Cliente> obterTodos(){
+        return repository.findAll();
     }
 
     @GetMapping("{id}")
