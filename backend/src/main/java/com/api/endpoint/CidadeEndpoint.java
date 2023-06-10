@@ -1,10 +1,11 @@
 package com.api.endpoint;
 
+import com.api.controller.CidadeController;
 import com.api.controller.EstadoController;
+import com.api.dto.CidadeDTO;
 import com.api.dto.EstadoDTO;
+import com.api.dto.project.CidadeListDTO;
 import com.api.dto.project.EstadoListDTO;
-import com.api.orm.Estado;
-import io.quarkus.hibernate.orm.panache.PanacheQuery;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
@@ -12,36 +13,37 @@ import jakarta.ws.rs.core.Response;
 
 import java.util.List;
 
-@Path("/api/estado")
+@Path("/api/cidade")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public class EstadoEndpoint {
+public class CidadeEndpoint {
 
     @Inject
-    EstadoController estadoController;
+    CidadeController cidadeController;
 
     @POST
-    public Response create(EstadoDTO estadoDTO){
-        estadoDTO = estadoController.create(estadoDTO);
-        return Response.ok(estadoDTO).build();
+    public Response create(CidadeDTO cidadeDTO){
+        cidadeDTO = cidadeController.create(cidadeDTO);
+        return Response.ok(cidadeDTO).build();
     }
 
     @PUT
-    public Response update(EstadoDTO estadoDTO){
-        estadoDTO = estadoController.update(estadoDTO);
-        return Response.ok(estadoDTO).build();
+    public Response update(CidadeDTO cidadeDTO){
+        cidadeDTO = cidadeController.update(cidadeDTO);
+        return Response.ok(cidadeDTO).build();
     }
 
     @GET
     public Response finAll(){
-        List<EstadoListDTO> list = estadoController.findAll();
+        List<CidadeListDTO> list = cidadeController.findAll();
         return Response.ok(list).build();
     }
 
     @DELETE
     @Path("/{id}")
     public Response delete(@PathParam("id") Long id){
-        estadoController.delete(id);
+        cidadeController.delete(id);
         return Response.ok().build();
     }
+
 }
