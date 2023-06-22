@@ -1,21 +1,22 @@
-import './App.css';
-import SayMyName from "./components/SayMyName";
-import Pessoa from "./components/Pessoa";
-import List from "./components/List";
-import Frase from "./components/Frase";
+import {BrowserRouter as Router, Routes, Route, Link} from "react-router-dom";
+import Home from "./pages/Home";
+import Empresa from "./pages/Empresa";
+import Contato from "./pages/Contato";
+import NavBar from "./components/layout/NavBar";
+import Footer from "./components/layout/Footer";
 
 function App() {
-    const nome = 'Mariah'
+
     return (
-        <div className="App">
-            <Frase/>
-            <Frase/>
-            <SayMyName nome="Marcos"/>
-            <SayMyName nome="Ana"/>
-            <SayMyName nome={nome}/>
-            <Pessoa nome="Marcos" idade="30" profissao="Programador" foto="https://via.placeholder.com/150"/>
-            <List/>
-        </div>
+        <Router>
+            <NavBar/>
+            <Routes>
+                <Route exact path="/" element={<Home/>}></Route>
+                <Route path="/empresa" element={<Empresa/>}></Route>
+                <Route path="/contato" element={<Contato/>}></Route>
+            </Routes>
+            <Footer/>
+        </Router>
     );
 }
 
